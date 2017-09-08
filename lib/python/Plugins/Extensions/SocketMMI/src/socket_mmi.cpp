@@ -1,4 +1,23 @@
-#include 
+#include "socket_mmi.h"
+
+#include <unistd.h>
+#include <fcntl.h>
+#include <sys/ioctl.h>
+
+#include <lib/base/ebase.h>
+#include <lib/base/init.h>
+#include <lib/base/init_num.h>
+#include <lib/base/eerror.h>
+#include <lib/base/estring.h>
+#include <lib/dvb_ci/dvbci_session.h>
+
+#define MAX_LENGTH_BYTES 4
+#define MIN_LENGTH_BYTES 1
+//#define MMIDEBUG
+
+eSocket_UI *eSocket_UI::instance;
+
+eSocket_UI::eSocket_UI()
 	:eMMI_UI(1)
 {
 	ASSERT(!instance);
